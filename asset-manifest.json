@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dev-quote-gen/static/css/main.f6acfa27.css",
+    "main.js": "/dev-quote-gen/static/js/main.f9424334.js",
+    "static/js/787.bf514722.chunk.js": "/dev-quote-gen/static/js/787.bf514722.chunk.js",
+    "index.html": "/dev-quote-gen/index.html",
+    "main.f6acfa27.css.map": "/dev-quote-gen/static/css/main.f6acfa27.css.map",
+    "main.f9424334.js.map": "/dev-quote-gen/static/js/main.f9424334.js.map",
+    "787.bf514722.chunk.js.map": "/dev-quote-gen/static/js/787.bf514722.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6acfa27.css",
+    "static/js/main.f9424334.js"
+  ]
+}
