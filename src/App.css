@@ -5,11 +5,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    height: 90vh;
     padding: 60px;
 }
 .quote{
-    width: 25rem;
+    max-width: 25rem;
     border-left: 4px solid #F7DF94;
     padding-left: 30px;
+}
+.author{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    gap: 100px;
+}
+.author:hover{
+    background-color: black;
+    color: white;
+}
+.name-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import Quotes from "./components/Quotes";
 export default function App() {
   const [data, setData] = useState(false);
   const [error, setError] = useState(null);
@@ -15,9 +16,7 @@ export default function App() {
   console.log(data);
   return (
     <div className="app-container">
-      <div className="quote-container">
-        <div className="quote">{data && data[0].quoteText}</div>
-      </div>
+      {data && data.map((item)=><Quotes quoteAuthor={item.quoteAuthor} quoteGenre={item.quoteGenre} quoteText={item.quoteText} />)}
     </div>
   );
 }
