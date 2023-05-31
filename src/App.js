@@ -21,7 +21,7 @@ export default function App() {
   console.log(data, "data");
   return (
     <div className="app-container">
-      <span className="random-button">
+      <span className="random-button" onClick={()=>getRandomQuote()}>
         get random quote{" "}
         <svg
           xmlns="http://www.w3.org/2000/svg"
