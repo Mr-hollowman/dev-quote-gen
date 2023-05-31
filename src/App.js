@@ -5,38 +5,50 @@ import Quotes from "./components/Quotes";
 export default function App() {
   const [data, setData] = useState(false);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const getRandomQuote = (author) => {
+    setIsLoading(true);
     axios(
       `https://quote-garden.onrender.com/api/v3/quotes${
-        author ? "?limit=3&author=" + author.toString() : "/random"
+        author ? "?limit=3&author=" + author : "/random"
       }`
     )
-      .then((res) => setData(res.data.data))
-      .catch((err) => setError(err.message));
+      .then((res) => {
+        setIsLoading(false);
+        setError(false);
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err);
+        setData(null);
+      });
   };
   useEffect(() => {
     getRandomQuote();
   }, []);
   const isAuthorPage = data && data.length > 1;
-  console.log(data, "data");
   return (
     <div className="app-container">
-      <span className="random-button" onClick={()=>getRandomQuote()}>
-        get random quote{" "}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-bootstrap-reboot"
-          viewBox="0 0 16 16"
-        >
-          <path d="M1.161 8a6.84 6.84 0 1 0 6.842-6.84.58.58 0 1 1 0-1.16 8 8 0 1 1-6.556 3.412l-.663-.577a.58.58 0 0 1 .227-.997l2.52-.69a.58.58 0 0 1 .728.633l-.332 2.592a.58.58 0 0 1-.956.364l-.643-.56A6.812 6.812 0 0 0 1.16 8z" />
-          <path d="M6.641 11.671V8.843h1.57l1.498 2.828h1.314L9.377 8.665c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H5.5v7.352h1.141zm0-3.75V5.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.504 1.324-1.386 1.324h-1.6z" />
-        </svg>
-      </span>
-      {isAuthorPage && <h1>{data[0].quoteAuthor}</h1>}
-      {data &&
+      {!error && !isLoading && (
+        <span className="random-button" onClick={() => getRandomQuote()}>
+          get random quote{" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="bi bi-bootstrap-reboot"
+            viewBox="0 0 16 16"
+          >
+            <path d="M1.161 8a6.84 6.84 0 1 0 6.842-6.84.58.58 0 1 1 0-1.16 8 8 0 1 1-6.556 3.412l-.663-.577a.58.58 0 0 1 .227-.997l2.52-.69a.58.58 0 0 1 .728.633l-.332 2.592a.58.58 0 0 1-.956.364l-.643-.56A6.812 6.812 0 0 0 1.16 8z" />
+            <path d="M6.641 11.671V8.843h1.57l1.498 2.828h1.314L9.377 8.665c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H5.5v7.352h1.141zm0-3.75V5.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.504 1.324-1.386 1.324h-1.6z" />
+          </svg>
+        </span>
+      )}
+      {isAuthorPage && !isLoading && <h1>{data[0].quoteAuthor}</h1>}
+      {!isLoading &&
+        data &&
         data.map((item, index) => (
           <Quotes
             key={index}
@@ -47,6 +59,8 @@ export default function App() {
             getRandomQuote={getRandomQuote}
           />
         ))}
+      {isLoading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
     </div>
   );
 }

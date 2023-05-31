@@ -34,12 +34,12 @@
   flex-direction: column;
   gap: 5px;
 }
-.random-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    position: fixed;
-    top: 20px;
-    right: 20px;
+.random-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
 }

@@ -7,7 +7,6 @@ export default function Quotes({
   isAuthorPage,
   getRandomQuote,
 }) {
-  console.log(isAuthorPage, "author page");
   return (
     <div className="quote-container">
       <p className="quote">{quoteText}</p>
