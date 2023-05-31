@@ -1,0 +1,15 @@
+.app-container{
+
+}
+.quote-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 60px;
+}
+.quote{
+    width: 25rem;
+    border-left: 4px solid #F7DF94;
+    padding-left: 30px;
+}
